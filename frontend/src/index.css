@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+:root {
+  --primary-100:#1DB954;
+  --primary-200:#14823B;
+  --primary-300:#A6F1C0;
+  --accent-100:#FFD700;
+  --accent-200:#B39600;
+  --text-100:#FFFFFF;
+  --text-200:#d4d5c8;
+  --bg-100:#0B4F30;
+  --bg-200:#0A4B2E;
+  --bg-300:#0E673E;
+
+}
+
+:root {
+  --amin-speed: .2s
+}
+
+body {
+  /* 关闭选择 */
+  user-select: none;
+  /* 禁止滚动条 */
+  overflow: hidden;
+  /* 禁止拖动 */
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+
+  font-family: "Microsoft YaHei", "微软雅黑", "黑体", "SimHei", "宋体", "Arial",
+    sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  -webkit-user-drag: none;
+}
+
+img {
+  -webkit-user-drag: none;
+}
+
+#root {
+  width: 1024px;
+  height: 770px;
+  background: var(--bg-200);
+  margin: 0;
+  padding: 0;
+  /* position: absolute; */
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+#title-bar {
+  --wails-draggable: drag;
+}
+
+#title-bar .title-bar-controls {
+  --wails-draggable: no-drag;
+}
+
+#aside {
+  transition: width 0.3s ease;
+  background: var(--bg-200);
+}
+
+#content {
+  background: var(--bg-300);
+  border-radius: 8px 0 0 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* 游戏目录选择页面 磁盘卡片 */
+.diskCard {
+  width: 100px;
+  height: 100px;
+  background: var(--bg-200);
+  color: var(--text-100);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px;
+  flex-direction: column;
+  transition: all, var(--amin-speed);
+
+  &:hover {
+    background: var(--bg-300);
+    color: var(--primary-100);
+  }
+}
+
+/* 游戏目录选择页面 文件列表 */
+#files {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-100) var(--bg-300);
+  width: 80%;
+  overflow-y: auto;
+  max-height: 75%;
+  overflow-x: hidden;
+  border-radius: 10px;
+
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--bg-100);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--bg-100);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--bg-300);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+}
+
+/* 游戏目录选择页面 文件卡片 */
+.fileCard {
+  height: 50px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  align-content: center;
+  border: 1px solid var(--bg-100);
+  background: var(--bg-200);
+  margin-top: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* 游戏目录选择页面 文件夹卡片 */
+.folderCard {
+  height: 50px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  align-content: center;
+  border: 1px solid var(--bg-100);
+  background: var(--bg-200);
+  margin-top: 5px;
+  transition: all var(--amin-speed) ease-in-out;
+
+  &:hover {
+    background: var(--bg-300);
+  }
+}
+
+/* 游戏目录选择页面 返回按钮 */
+.back-icon {
+  width: 10%;
+  background: var(--accent-200);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin-right: 10px;
+  transition: all var(--amin-speed) ease-in-out;
+
+  &:hover {
+    background: var(--bg-100);
+  }
+}
