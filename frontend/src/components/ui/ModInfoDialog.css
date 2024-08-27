@@ -1,0 +1,27 @@
+.mod-info-drawer {
+    & .MuiDrawer-paper {
+        height: 60%;
+        width: 60%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.mod-info-dw-thumbnail {
+    height: 40vh;
+    width: 40vh;
+    border-radius: 5%;
+    border: 1px solid var(--primary-200);
+}
+
+.mod-dw-detil {
+    margin-top: 20px;
+    width: 80%;
+
+    .mod-dw-detil-title {
+        color: var(--primary-200);
+        font-weight: bold;
+        font-size: large;
+    }
+}

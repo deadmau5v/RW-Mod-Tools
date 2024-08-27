@@ -1,0 +1,94 @@
+.mod-list {
+  color: var(--text-100);
+  padding: 10px;
+  overflow-y: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--bg-100);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--bg-100);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--bg-300);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+}
+
+.mod-list-item {
+  background: var(--bg-200);
+  color: var(--text-100);
+  padding: 10px;
+  border-radius: 10px;
+  transition: all var(--amin-speed) ease-in-out;
+  font-size: 17px;
+
+  &:hover .mod-item-thumbnail {
+    border: 2px solid var(--accent-100);
+  }
+}
+
+.mod-info-title {
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--primary-300);
+}
+
+.mod-info-description {
+  font-size: 14px;
+  color: var(--text-200);
+}
+
+.mod-item-tags {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.mod-item-tag {
+  color: var(--bg-100);
+  background: var(--accent-100);
+  padding: 1px 8px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.mod-item-thumbnail {
+  width: 200px;
+  height: 200px;
+  border-radius: 5%;
+  border: 2px solid var(--bg-100);
+
+  transition: border var(--amin-speed) ease-in-out;
+}
+
+.mod-info {
+  margin-left: 3%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mod-item-options {
+  margin-top: auto;
+  margin-bottom: 5px;
+}
+
+#alert-remove-dialog {
+  & .MuiPaper-root {
+    background: transparent;
+    border-radius: 5%;
+    border: 2px solid rgb(255, 75, 75);
+  }
+}
