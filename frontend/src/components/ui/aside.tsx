@@ -1,5 +1,5 @@
 import React, { useState} from "react";
-import { ChevronRight, ChevronLeft, List, Github, Home } from "lucide-react";
+import { ChevronRight, ChevronLeft, List, Github } from "lucide-react";
 import { NavLink } from 'react-router-dom';
 import { BrowserOpenURL } from "@wails/runtime/runtime"
 // @ts-ignore
@@ -31,7 +31,7 @@ export default function Aside({config}: {config: ConfigType | undefined}) {
             />
             <hr className="w-full h-[1px] mt-2 mb-2 border-[var(--bg-300)]" />
 
-            <NavLink to="/" className={({ isActive }) => cn("flex items-center justify-center w-full h-10 hover:bg-[var(--bg-300)] rounded-xl transition-all duration-300 mt-2 mb-2", isActive ? 'bg-[var(--bg-300)]' : '')}>
+            {/* <NavLink to="/" className={({ isActive }) => cn("flex items-center justify-center w-full h-10 hover:bg-[var(--bg-300)] rounded-xl transition-all duration-300 mt-2 mb-2", isActive ? 'bg-[var(--bg-300)]' : '')}>
                 {!isCollapsed ? (
                     <>
                         <Home className="w-4 h-4 text-[var(--text-100)] transition-all duration-300" />
@@ -40,9 +40,9 @@ export default function Aside({config}: {config: ConfigType | undefined}) {
                 ) : (
                     <Home className="w-4 h-4 text-[var(--text-100)] transition-all duration-300" />
                 )}
-            </NavLink>
+            </NavLink> */}
 
-            <NavLink to="/modlist" className={({ isActive }) => cn("flex items-center justify-center w-full h-10 hover:bg-[var(--bg-300)] rounded-xl transition-all duration-300 mt-2 mb-2", isActive ? 'bg-[var(--bg-300)]' : '')}>
+            <NavLink to="/" className={({ isActive }) => cn("flex items-center justify-center w-full h-10 hover:bg-[var(--bg-300)] rounded-xl transition-all duration-300 mt-2 mb-2", isActive ? 'bg-[var(--bg-300)]' : '')}>
                 {!isCollapsed ? (
                     <>
                         <List className="w-4 h-4 text-[var(--text-100)] transition-all duration-300" />

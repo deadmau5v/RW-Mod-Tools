@@ -7,12 +7,15 @@ import { main } from "@wails/go/models.ts";
 import ConfigType = main.ConfigType;
 import SelectGameDir from "@/SelectGameDir.tsx";
 import ModList from "@/page/ModList";
+import { Mod } from "./types";
 // @ts-ignore
-import Welcome from "@/page/Welcome"
+// import Welcome from "@/page/Welcome"
+// Mod information
 
 function App() {
 
     const [config, setConfig] = useState<ConfigType>();
+    const [editMod, setEditMod] = useState<Mod | null>(null);
 
     useEffect(() => {
         console.log(`%c RW MOD %c Tools %c 欢迎使用`, "color: #ffffff; background: #14823B", "color: #0000000; background: #FFD700", "")
@@ -65,8 +68,10 @@ function App() {
 
                             <div id="content" className="w-full h-full">
                                 <Routes>
-                                    <Route path="/" element={<Welcome config={config} />} />
-                                    <Route path="/modlist" element={<ModList config={config} />} />
+                                    {/* <Route path="/" element={<Welcome config={config} />} /> */}
+                                    {/* <Route path="/modlist" element={<ModList config={config} />} /> */}
+                                    <Route path="/" element={<ModList config={config} setEditMod={setEditMod} />} />
+                                    { editMod && <Route path="/edit-mod" element={<>{editMod.mod_info.title}</>} /> }
                                 </Routes>
                             </div>
                         </Router>
@@ -75,7 +80,6 @@ function App() {
                     <SelectGameDir config={config} setConfig={setConfig} />
             }
         </div>
-
     );
     //#endregion
 }
