@@ -71,6 +71,7 @@ export default function ModInfoDialog({ mod, onClose, config }: { mod: Mod, onCl
             flexDirection: "column",
             alignItems: "center"
         }}>
+            {/* 获取缩略图 */}
             {getModThumbnail(mod)}
             <div className="mod-dw-detil">
                 <Typography variant="h6" gutterBottom component="div" sx={{
@@ -86,8 +87,9 @@ export default function ModInfoDialog({ mod, onClose, config }: { mod: Mod, onCl
                         <TableBody sx={{
                             overflow: "hidden"
                         }}>
+
                             {getTableItem("标题", mod.mod_info.title)}
-                            {getTableItem("描述", mod.mod_info.description)}
+                            {getTableItem("描述", mod.mod_info.description.replaceAll("\\n", "\n"))}
                             {getTableItem("位置", mod.path)}
                             {getTableItem("标签", mod.mod_info.tags.join(", "))}
                             {getTableItem("版本", mod.mod_info.minVersion)}

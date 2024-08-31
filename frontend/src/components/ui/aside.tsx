@@ -1,23 +1,30 @@
-import React, { useState} from "react";
-import { ChevronRight, ChevronLeft, List, Github } from "lucide-react";
+import React, { useState } from "react";
+import { ChevronRight, ChevronLeft, List } from "lucide-react";
 import { NavLink } from 'react-router-dom';
 import { BrowserOpenURL } from "@wails/runtime/runtime"
 // @ts-ignore
-import {main} from "@wails/go/models.ts";
+import { main } from "@wails/go/models.ts";
 import ConfigType = main.ConfigType;
-
+import { Folder } from "@mui/icons-material";
 const cn = (...classes: string[]) => {
     return classes.join(" ");
 };
 
-function openGithub() {
-    BrowserOpenURL("https://github.com/deadmau5v/Norland-Editor");
-}
 
-export default function Aside({config}: {config: ConfigType | undefined}) {
+export default function Aside({ config }: { config: ConfigType }) {
     const [isCollapsed, setIsCollapsed] = useState(false);
+    const [showPaths, setShowPaths] = useState(false);
 
-    config
+    function openPath(path: string, config: ConfigType) {
+        async function fn() {
+            path = `"${config.rw_dir}/${path}"`
+                .replaceAll('\\', '/')
+                .replaceAll('//', '/')
+            BrowserOpenURL(path);
+            setShowPaths(false);
+        }
+        fn();
+    }
 
     return (
         <div id="aside" className={cn("w-[200px] h-full", isCollapsed ? "w-[60px]" : "", "p-2 flex flex-col")}>
@@ -30,17 +37,6 @@ export default function Aside({config}: {config: ConfigType | undefined}) {
                 isCollapsed={isCollapsed}
             />
             <hr className="w-full h-[1px] mt-2 mb-2 border-[var(--bg-300)]" />
-
-            {/* <NavLink to="/" className={({ isActive }) => cn("flex items-center justify-center w-full h-10 hover:bg-[var(--bg-300)] rounded-xl transition-all duration-300 mt-2 mb-2", isActive ? 'bg-[var(--bg-300)]' : '')}>
-                {!isCollapsed ? (
-                    <>
-                        <Home className="w-4 h-4 text-[var(--text-100)] transition-all duration-300" />
-                        <span className="text-[var(--text-100)] ml-2 hidden md:block text-sm whitespace-nowrap overflow-hidden transition-all duration-300">首页</span>
-                    </>
-                ) : (
-                    <Home className="w-4 h-4 text-[var(--text-100)] transition-all duration-300" />
-                )}
-            </NavLink> */}
 
             <NavLink to="/" className={({ isActive }) => cn("flex items-center justify-center w-full h-10 hover:bg-[var(--bg-300)] rounded-xl transition-all duration-300 mt-2 mb-2", isActive ? 'bg-[var(--bg-300)]' : '')}>
                 {!isCollapsed ? (
@@ -55,20 +51,45 @@ export default function Aside({config}: {config: ConfigType | undefined}) {
 
             <hr className="w-full h-[1px] mt-auto mb-2 border-[var(--bg-300)]" />
 
-            <button className={"flex items-center justify-center w-full h-10 hover:bg-[var(--bg-300)] rounded-xl transition-all duration-300 mb-2"} onClick={openGithub}>
+            <button className={"flex items-center justify-center w-full h-10 hover:bg-[var(--bg-300)] rounded-xl transition-all duration-300 mb-2"} onClick={() => setShowPaths(!showPaths)}>
                 {!isCollapsed ? (
                     <>
-                        <Github className="w-4 h-4 text-[var(--text-100)] transition-all duration-300" />
-                        <span className="text-[var(--text-100)] ml-2 hidden md:block text-sm whitespace-nowrap overflow-hidden transition-all duration-300">项目地址</span>
+                        <Folder className="w-4 h-4 text-[var(--text-100)] transition-all duration-300" />
+                        <span className="text-[var(--text-100)] ml-2 hidden md:block text-sm whitespace-nowrap overflow-hidden transition-all duration-300">打开游戏路径</span>
                     </>
                 ) : (
-                    <Github className="w-4 h-4 text-[var(--text-100)] transition-all duration-300" />
+                    <Folder className="w-4 h-4 text-[var(--text-100)] transition-all duration-300" />
                 )}
             </button>
+
+            {showPaths && (
+                <div className="flex flex-col mt-2">
+                    {isCollapsed ?
+                        <button title="模组" onClick={() => openPath('mods/units', config)} className="flex items-center justify-center w-full h-10 hover:bg-[var(--bg-300)] rounded-xl transition-all duration-300 mb-1">
+                            <span className="text-[var(--text-100)]">模</span>
+                        </button>
+                        : <button onClick={() => openPath('mods/units', config)} className="flex items-center justify-center w-full h-10 hover:bg-[var(--bg-300)] rounded-xl transition-all duration-300 mb-1">
+                            <span className="text-[var(--text-100)]">Mod</span>
+                        </button>}
+                    {isCollapsed ?
+                        <button title="地图" onClick={() => openPath('mods/maps', config)} className="flex items-center justify-center w-full h-10 hover:bg-[var(--bg-300)] rounded-xl transition-all duration-300 mb-1">
+                            <span className="text-[var(--text-100)]">图</span>
+                        </button>
+                        : <button onClick={() => openPath('mods/maps', config)} className="flex items-center justify-center w-full h-10 hover:bg-[var(--bg-300)] rounded-xl transition-all duration-300 mb-1">
+                            <span className="text-[var(--text-100)]">地图</span>
+                        </button>}
+                    {isCollapsed ?
+                        <button title="游戏根目录" onClick={() => openPath('', config)} className="flex items-center justify-center w-full h-10 hover:bg-[var(--bg-300)] rounded-xl transition-all duration-300 mb-1">
+                            <span className="text-[var(--text-100)]">根</span>
+                        </button>
+                        : <button onClick={() => openPath('', config)} className="flex items-center justify-center w-full h-10 hover:bg-[var(--bg-300)] rounded-xl transition-all duration-300 mb-1">
+                            <span className="text-[var(--text-100)]">游戏根目录</span>
+                        </button>}
+                </div>
+            )}
         </div>
     );
 }
-
 
 function AsideOption({ Icon, Text, onClick, isCollapsed, IconCollapsed, ClassName }: { Icon: React.ReactNode, Text: string, onClick: () => void, isCollapsed: boolean, IconCollapsed: React.ReactNode, ClassName?: string }) {
 

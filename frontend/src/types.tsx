@@ -1,4 +1,3 @@
-
 // Mod information
 type ModInfo = {
     path: string;
@@ -28,7 +27,30 @@ type Mod = {
 type Response = {
     code: number;
     msg: string;
-    data: Mod[];
+    data: any;
 }
 
-export type {Response, Mod, ModInfo, MusicInfo}
+
+type Section = {
+    key: string,
+    name: string,
+}
+
+type Code = {
+    Section: Section,
+    comment: string,
+    demo: string,
+    description: string,
+    key: string,
+    name: string,
+    value_type: string,
+    value: string,
+}
+
+type Config = {
+    name: string
+    code: Code[]
+    path: string
+}
+
+export type {Response, Mod, ModInfo, MusicInfo, Section, Code, Config}

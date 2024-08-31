@@ -6,8 +6,10 @@ import { GetConfig } from "@wails/go/main/App";
 import { main } from "@wails/go/models.ts";
 import ConfigType = main.ConfigType;
 import SelectGameDir from "@/SelectGameDir.tsx";
+import ImgEdit from "./components/ui/imgEdit";
 import ModList from "@/page/ModList";
 import { Mod } from "./types";
+import EditMod from "./page/EditMod";
 // @ts-ignore
 // import Welcome from "@/page/Welcome"
 // Mod information
@@ -61,23 +63,25 @@ function App() {
         <div id="root">
             <TitleBar config={config} />
             {
-                config ?
+                config?.rw_dir ?
                     <div className="flex w-full h-[calc(100vh-32px)]">
                         <Router>
                             <Aside config={config} />
 
-                            <div id="content" className="w-full h-full">
+                            <div id="content">
                                 <Routes>
                                     {/* <Route path="/" element={<Welcome config={config} />} /> */}
                                     {/* <Route path="/modlist" element={<ModList config={config} />} /> */}
                                     <Route path="/" element={<ModList config={config} setEditMod={setEditMod} />} />
-                                    { editMod && <Route path="/edit-mod" element={<>{editMod.mod_info.title}</>} /> }
+                                    { editMod && <Route path="/edit-mod" element={<EditMod config={config} mod={editMod} />} /> }
                                 </Routes>
                             </div>
                         </Router>
                     </div>
                     :
-                    <SelectGameDir config={config} setConfig={setConfig} />
+                    // <SelectGameDir config={config} setConfig={setConfig} />
+                    <ImgEdit />
+                    // <></>
             }
         </div>
     );

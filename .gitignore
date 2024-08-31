@@ -1,2 +1,6 @@
 build/bin/Norland-Editor.exe
 /build/
+# 图片缓存
+/RW-Mod-Tools-API/.pngs
+/RW-Mod-Tools-API/tmp
+/tmp

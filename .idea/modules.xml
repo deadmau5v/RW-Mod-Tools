@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Norland-Editor-main.iml" filepath="$PROJECT_DIR$/.idea/Norland-Editor-main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/RW-Mod-Tools.iml" filepath="$PROJECT_DIR$/.idea/RW-Mod-Tools.iml" />
     </modules>
   </component>
 </project>
