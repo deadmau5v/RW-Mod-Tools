@@ -2,7 +2,7 @@
 
 <!-- Logo -->
 <div align="center">
-  <img src="./doc/hq.png" alt="logo" width="140"  height="auto" />
+  <img src="./build/appicon.png" alt="logo" width="50"  height="auto" />
   <br/>
 
 <h3><b>RW Mod Tools</b></h3>
@@ -43,7 +43,8 @@
 
 ## 🚀 演示 <a name="live-demo"></a>
 
-
+![img-1](./doc/img-1.png)
+![img.png](doc/img-2.png)
 
 <p align="right">(<a href="#readme-top">返回顶部</a>)</p>
 
