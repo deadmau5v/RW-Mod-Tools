@@ -1,0 +1,4 @@
+.MuiTooltip-tooltip {
+    background-color: var(--bg-300);
+    height: auto;
+}
