@@ -6,7 +6,6 @@ import { GetConfig } from "@wails/go/main/App";
 import { main } from "@wails/go/models.ts";
 import ConfigType = main.ConfigType;
 import SelectGameDir from "@/SelectGameDir.tsx";
-import ImgEdit from "./components/ui/imgEdit";
 import ModList from "@/page/ModList";
 import { Mod } from "./types";
 import EditMod from "./page/EditMod";
@@ -79,9 +78,7 @@ function App() {
                         </Router>
                     </div>
                     :
-                    // <SelectGameDir config={config} setConfig={setConfig} />
-                    <ImgEdit />
-                    // <></>
+                    <SelectGameDir config={config} setConfig={setConfig} />
             }
         </div>
     );
